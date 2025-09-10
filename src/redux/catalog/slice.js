@@ -21,19 +21,6 @@ const catalogSlice = createSlice({
     totalPages: 0,
     loading: false,
     error: null,
-    favoriteCars: [],
-  },
-  reducers: {
-    addFavorite: (state, action) => {
-      if (!state.favoriteCars.includes(action.payload)) {
-        state.favoriteCars.push(action.payload);
-      }
-    },
-    removeFavorite: (state, action) => {
-      state.favoriteCars = state.favoriteCars.filter(
-        (id) => id !== action.payload,
-      );
-    },
   },
   extraReducers: (builder) =>
     builder
@@ -57,5 +44,4 @@ const catalogSlice = createSlice({
       .addCase(fetchCars.rejected, handleRejected),
 });
 
-export const { addFavorite, removeFavorite } = catalogSlice.actions;
 export default catalogSlice.reducer;
