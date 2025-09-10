@@ -1,10 +1,8 @@
-import { SyncLoader } from 'react-spinners';
+import { RiseLoader } from 'react-spinners';
 import style from './Loader.module.css';
 
-const Loader = () => (
+export default function Loader() {
   <div className={style.wrapper}>
-    <SyncLoader color="#ffeba7" />
-  </div>
-);
-
-export default Loader;
+    <RiseLoader color="#3470ff;" />
+  </div>;
+}

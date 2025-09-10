@@ -1,104 +1,59 @@
 .container {
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 24px;
-  background-color: #2a2b38;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-  background-position: bottom center;
+  min-height: calc(100vh - 68px);
+  padding: 436px 328px 60px;
+  background-image: url('/images/Picturehero@1x.jpg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 300%;
-  border-radius: 6px;
-  color: #c4c3ca;
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  box-shadow: 0 4px 8px rgba(21, 21, 21, 0.4);
+  align-items: center;
+  justify-content: center;
 }
 
-.container p {
+.title {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
   margin-bottom: 16px;
-  line-height: 1.6;
-  font-size: 16px;
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    text-shadow: 0 0 4px #ffeba7;
-  }
-  50% {
-    text-shadow: 0 0 10px #ffe27a;
-  }
-}
-
-.brand {
-  animation: pulse 3s infinite;
-}
-
-.tagline {
-  font-size: 20px;
-  letter-spacing: 3px;
-  text-align: center;
-  font-weight: bold;
-  color: #ffeba7;
-}
-
-.container strong {
-  color: #ffeba7;
-}
-
-.container em {
-  font-style: italic;
-  color: #f0e9d2;
-}
-
-.container ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 12px 0 24px;
-}
-
-.container li {
-  margin-bottom: 12px;
-  position: relative;
-  padding-left: 32px;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.container li::before {
-  content: '📌';
-  position: absolute;
-  left: 0;
-}
-
-.container a {
-  color: #ffeba7;
-  text-decoration: none;
+.descr {
   font-weight: 600;
-}
-
-.container a:hover {
-  text-decoration: underline;
-  color: #ffe27a;
-}
-
-code {
-  background-color: #1f2029;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #ffeba7;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-footer {
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid #3a3b4a;
-  font-size: 14px;
-  color: #999;
+  font-size: 24px;
+  line-height: 1.33333;
   text-align: center;
-  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0px;
+
+  border-radius: 12px;
+  border: none;
+  width: 276px;
+  height: 44px;
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+
+  background: #3470ff;
+  transition: background-color 0.8s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #0b44cd;
 }
