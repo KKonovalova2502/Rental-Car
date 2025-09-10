@@ -1,7 +1,9 @@
+import css from './NotFoundPage.module.css';
+
 export default function NotFoundPage() {
   return (
-    <>
-      <strong>Not found page</strong>
-    </>
+    <div className={css.wrap}>
+      <strong>Sorry! This page does not exist.</strong>
+    </div>
   );
 }

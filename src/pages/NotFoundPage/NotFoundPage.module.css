@@ -1,0 +1,5 @@
+.wrap {
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+}
