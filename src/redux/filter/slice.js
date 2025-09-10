@@ -11,28 +11,17 @@ const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    setBrand: (state, action) => {
-      state.brand = action.payload;
-    },
-    setRentalPrice: (state, action) => {
-      state.rentalPrice = action.payload;
-    },
-    setMinMileage: (state, action) => {
-      state.minMileage = action.payload;
-    },
-    setMaxMileage: (state, action) => {
-      state.maxMileage = action.payload;
+    setFilters: (state, action) => {
+      const { brand, rentalPrice, minMileage, maxMileage } = action.payload;
+      state.brand = brand;
+      state.rentalPrice = rentalPrice;
+      state.minMileage = minMileage;
+      state.maxMileage = maxMileage;
     },
     clearFilters: () => initialState,
   },
 });
 
-export const {
-  setBrand,
-  setRentalPrice,
-  setMinMileage,
-  setMaxMileage,
-  clearFilters,
-} = filterSlice.actions;
+export const { setFilters, clearFilters } = filterSlice.actions;
 
 export default filterSlice.reducer;

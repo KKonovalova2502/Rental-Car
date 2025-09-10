@@ -14,7 +14,9 @@ export default function CatalogPage() {
   const filters = useSelector(selectAllFilters);
 
   useEffect(() => {
-    dispatch(fetchCars({ page: 1, ...filters }));
+    if (filters) {
+      dispatch(fetchCars({ page: 1, ...filters }));
+    }
   }, [dispatch, filters]);
 
   return (
