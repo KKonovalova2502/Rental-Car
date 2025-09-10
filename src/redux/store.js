@@ -10,9 +10,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { catalogReducer } from './catalog/slice.js';
-import { filtersReducer } from './filter/slice.js';
-import { favoritesReducer } from './favorites/slice.js';
+import catalogReducer from './catalog/slice.js';
+import filtersReducer from './filter/slice.js';
+import favoritesReducer from './favorites/slice.js';
 import { brandReducer } from './brand/slice.js';
 
 const persistConfig = {

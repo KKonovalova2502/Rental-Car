@@ -28,11 +28,7 @@ export default function CarCard({ car }) {
   const isFavorite = useSelector(selectIsFavorite(id));
 
   const toggleFavorite = () => {
-    if (isFavorite) {
-      dispatch(removeFavorite(id));
-    } else {
-      dispatch(addFavorite(id));
-    }
+    dispatch(isFavorite ? removeFavorite(id) : addFavorite(id));
   };
 
   return (
@@ -45,15 +41,13 @@ export default function CarCard({ car }) {
           type="button"
           aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
         >
-          {isFavorite ? (
-            <svg width="16" height="16">
-              <use href="/sprite-icons.svg#icon-heart-active" />
-            </svg>
-          ) : (
-            <svg width="16" height="16">
-              <use href="/sprite-icons.svg#icon-heart-default" />
-            </svg>
-          )}
+          <svg width="16" height="16">
+            <use
+              href={`/sprite-icons.svg#${
+                isFavorite ? 'icon-heart-active' : 'icon-heart-default'
+              }`}
+            />
+          </svg>
         </button>
       </div>
 
