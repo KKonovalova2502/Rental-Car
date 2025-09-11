@@ -7,8 +7,8 @@ export default function CarsList() {
   const cars = useSelector(selectCars);
   return (
     <ul className={css.list}>
-      {cars.map((car) => (
-        <li key={car.id} className={css.item}>
+      {cars.map((car, index) => (
+        <li key={`${car.id}-${index}`} className={css.item}>
           <CarCard car={car} />
         </li>
       ))}

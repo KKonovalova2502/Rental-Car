@@ -5,6 +5,8 @@ import MileageInputs from '../MileageInputs/MileageInputs.jsx';
 import BrandSelect from '../BrandSelect/BrandSelect.jsx';
 import { useState } from 'react';
 import { setFilters } from '../../redux/filter/slice.js';
+import { fetchCars } from '../../redux/catalog/operations.js';
+import { clearCars } from '../../redux/catalog/slice.js';
 
 export default function FilterBox() {
   const dispatch = useDispatch();
@@ -15,7 +17,17 @@ export default function FilterBox() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(setFilters({ brand, rentalPrice, minMileage, maxMileage }));
+    const newFilters = { brand, rentalPrice, minMileage, maxMileage };
+    dispatch(setFilters(newFilters));
+
+    const cleanFilters = Object.fromEntries(
+      Object.entries(newFilters).filter(
+        ([, v]) => v !== '' && v !== null && v !== undefined,
+      ),
+    );
+
+    dispatch(clearCars());
+    dispatch(fetchCars({ page: 1, ...cleanFilters }));
   };
 
   return (
