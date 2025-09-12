@@ -10,7 +10,7 @@ export default function HomePage() {
       <p className={css.descr}>
         Reliable and budget-friendly rentals for any journey
       </p>
-      <button className={css.btn} onClick={() => navigate('/catalog')}>
+      <button className={css.btn} onClick={() => navigate('/cars')}>
         View Catalog
       </button>
     </div>

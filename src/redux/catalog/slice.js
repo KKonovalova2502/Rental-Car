@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCars } from './operations.js';
+import { fetchCars, getCarById } from './operations.js';
 
 const handlePending = (state) => {
   state.loading = true;
@@ -21,6 +21,7 @@ const catalogSlice = createSlice({
     totalPages: 0,
     loading: false,
     error: null,
+    selectedCar: null,
   },
   reducers: {
     clearCars: (state) => {
@@ -28,6 +29,9 @@ const catalogSlice = createSlice({
       state.page = 1;
       state.totalItems = 0;
       state.totalPages = 0;
+    },
+    clearSelectedCar: (state) => {
+      state.selectedCar = null;
     },
   },
 
@@ -50,8 +54,15 @@ const catalogSlice = createSlice({
         state.totalItems = totalCars;
         state.totalPages = totalPages;
       })
-      .addCase(fetchCars.rejected, handleRejected),
+      .addCase(fetchCars.rejected, handleRejected)
+      .addCase(getCarById.pending, handlePending)
+      .addCase(getCarById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.selectedCar = action.payload;
+      })
+      .addCase(getCarById.rejected, handleRejected),
 });
 
-export const { clearCars } = catalogSlice.actions;
+export const { clearCars, clearSelectedCar } = catalogSlice.actions;
 export default catalogSlice.reducer;

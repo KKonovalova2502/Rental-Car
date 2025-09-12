@@ -22,8 +22,8 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<CarDetailsPage />} />
+          <Route path="/cars" element={<CatalogPage />} />
+          <Route path="/cars/:id" element={<CarDetailsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

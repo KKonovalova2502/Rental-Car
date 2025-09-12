@@ -1,0 +1,24 @@
+.btn {
+  border-radius: 12px;
+  border: 1px solid #3470ff;
+  width: 100%;
+  max-width: 156px;
+  height: 44px;
+  background-color: transparent;
+  outline: none;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  transition: border-color 0.8s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  border-color: #0b44cd;
+}
