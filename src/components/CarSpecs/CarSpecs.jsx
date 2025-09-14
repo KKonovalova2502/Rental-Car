@@ -25,7 +25,7 @@ export default function CarSpecs({ year, type, fuelConsumption, engineSize }) {
         </li>
         <li className={css.item}>
           <svg width="16" height="16">
-            <use href="/public/sprite-icons.svg#icon-gear" />
+            <use href="/sprite-icons.svg#icon-gear" />
           </svg>
           Engine Size: {engineSize}
         </li>

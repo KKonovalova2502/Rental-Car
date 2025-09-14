@@ -48,10 +48,9 @@ export default function CatalogPage() {
         </p>
       )}
       <CarsList />
-      <LoadMoreBtn
-        onClick={handleLoadMore}
-        disabled={page >= totalPages || loading}
-      />
+      {page < totalPages && !loading && (
+        <LoadMoreBtn onClick={handleLoadMore} />
+      )}
     </div>
   );
 }

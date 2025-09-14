@@ -10,7 +10,7 @@ export default function RentalConditions({ conditions }) {
         {conditions.map((item, index) => (
           <li key={index} className={css.item}>
             <svg width="16" height="16">
-              <use href="/public/sprite-icons.svg#icon-check-circle" />
+              <use href="/sprite-icons.svg#icon-check-circle" />
             </svg>
             {item}
           </li>
