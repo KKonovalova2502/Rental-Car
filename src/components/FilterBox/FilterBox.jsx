@@ -31,15 +31,17 @@ export default function FilterBox() {
   };
 
   return (
-    <form className="css.form" onSubmit={handleSearch}>
-      <BrandSelect value={brand} onChange={setBrand} />
-      <PriceSelect value={rentalPrice} onChange={setRentalPrice} />
-      <MileageInputs
-        min={minMileage}
-        max={maxMileage}
-        onChangeMin={setMinMileage}
-        onChangeMax={setMaxMileage}
-      />
+    <form className={css.form} onSubmit={handleSearch}>
+      <div className={css.wrap}>
+        <BrandSelect value={brand} onChange={setBrand} />
+        <PriceSelect value={rentalPrice} onChange={setRentalPrice} />
+        <MileageInputs
+          min={minMileage}
+          max={maxMileage}
+          onChangeMin={setMinMileage}
+          onChangeMax={setMaxMileage}
+        />
+      </div>
       <button type="submit" className={css.searchBtn}>
         Search
       </button>

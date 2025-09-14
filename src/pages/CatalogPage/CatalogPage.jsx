@@ -12,6 +12,7 @@ import Loader from '../../components/Loader/Loader.jsx';
 import { useEffect } from 'react';
 import { fetchCars } from '../../redux/catalog/operations.js';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn.jsx';
+import css from './CatalogPage.module.css';
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -33,11 +34,11 @@ export default function CatalogPage() {
       ),
     );
 
-    dispatch(fetchCars({ page: Number(page) + 1, ...cleanFilters }));
+    dispatch(fetchCars({ ...cleanFilters, page: Number(page) + 1 }));
   };
 
   return (
-    <div>
+    <div className={css.wrap}>
       <FilterBox />
       {loading && <Loader />}
       {error && (

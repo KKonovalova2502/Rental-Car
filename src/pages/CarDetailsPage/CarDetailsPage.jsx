@@ -9,6 +9,7 @@ import { getCarById } from '../../redux/catalog/operations.js';
 import { clearSelectedCar } from '../../redux/catalog/slice.js';
 import { useEffect } from 'react';
 import Loader from '../../components/Loader/Loader.jsx';
+import css from './CarDetailsPage.module.css';
 
 export default function CarDetailsPage() {
   const { id } = useParams();
@@ -26,11 +27,16 @@ export default function CarDetailsPage() {
   if (!car) return <Loader />;
 
   return (
-    <div>
-      <CarImage car={car} />
-      <CarDescr car={car} />
-      <CarInfo car={car} />
-      <BookingForm car={car} />
+    <div className={css.page}>
+      <div className={css.leftColumn}>
+        <CarImage car={car} />
+        <BookingForm car={car} />
+      </div>
+
+      <div className={css.rightColumn}>
+        <CarDescr car={car} />
+        <CarInfo car={car} />
+      </div>
     </div>
   );
 }

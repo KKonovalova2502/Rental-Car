@@ -18,7 +18,11 @@ const NotFoundPage = lazy(() =>
 export default function App() {
   return (
     <Layout>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{ duration: 3000 }}
+      />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

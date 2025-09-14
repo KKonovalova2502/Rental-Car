@@ -1,3 +1,5 @@
+import css from './MileageInputs.module.css';
+
 export default function MileageInputs({ min, max, onChangeMin, onChangeMax }) {
   const handleChangeMin = (e) => {
     onChangeMin(e.target.value);
@@ -9,20 +11,24 @@ export default function MileageInputs({ min, max, onChangeMin, onChangeMax }) {
 
   return (
     <div>
-      <label>
+      <label className={css.label}>
         Car mileage / km
-        <input
-          type="number"
-          placeholder="From"
-          value={min}
-          onChange={handleChangeMin}
-        />
-        <input
-          type="number"
-          placeholder="To"
-          value={max}
-          onChange={handleChangeMax}
-        />
+        <div className={css.inputs}>
+          <input
+            type="number"
+            placeholder="From"
+            value={min}
+            onChange={handleChangeMin}
+            className={css.input}
+          />
+          <input
+            type="number"
+            placeholder="To"
+            value={max}
+            onChange={handleChangeMax}
+            className={css.input}
+          />
+        </div>
       </label>
     </div>
   );

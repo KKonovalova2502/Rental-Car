@@ -60,7 +60,8 @@ export default function CarCard({ car }) {
         </div>
 
         <p className={css.details}>
-          {city} | {country} | {rentalCompany} | {type} | {formattedMileage} km
+          {city} | {country} | {rentalCompany} |<br />
+          {type} | {formattedMileage} km
         </p>
 
         <Link to={`/cars/${id}`} className={css.readMore}>

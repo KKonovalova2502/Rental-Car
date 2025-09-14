@@ -20,7 +20,7 @@ export default function CarDescr({ car }) {
       <div className={css.info}>
         <p>
           <svg width="16" height="16">
-            <use href="/public/sprite-icons.svg#icon-location" />
+            <use href="/sprite-icons.svg#icon-location" />
           </svg>
           {city}, {country}
         </p>

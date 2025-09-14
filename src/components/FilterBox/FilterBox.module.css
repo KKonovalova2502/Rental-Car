@@ -1,0 +1,33 @@
+.form {
+  margin: 0 auto;
+  margin-bottom: 56px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.wrap {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.searchBtn {
+  padding: 12px 24px;
+  background-color: #3470ff;
+  width: 156px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.8s ease;
+}
+
+.searchBtn:hover {
+  background-color: #0b44cd;
+}
