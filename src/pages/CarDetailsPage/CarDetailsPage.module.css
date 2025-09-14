@@ -1,9 +1,12 @@
 .page {
   display: flex;
+
   gap: 40px;
   padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 84px;
+  margin-bottom: 104px;
 }
 
 .leftColumn,
