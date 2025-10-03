@@ -1,47 +1,71 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './FilterBox.module.css';
 import PriceSelect from '../PriceSelect/PriceSelect.jsx';
 import MileageInputs from '../MileageInputs/MileageInputs.jsx';
 import BrandSelect from '../BrandSelect/BrandSelect.jsx';
-import { useState } from 'react';
 import { setFilters } from '../../redux/filter/slice.js';
-import { fetchCars } from '../../redux/catalog/operations.js';
 import { clearCars } from '../../redux/catalog/slice.js';
+import { selectAllFilters } from '../../redux/filter/selectors.js';
+import { useEffect, useState } from 'react';
+import { fetchCars } from '../../redux/catalog/operations.js';
+import { cleanFilters } from '../../utils/cleanFilters.js';
 
 export default function FilterBox() {
   const dispatch = useDispatch();
-  const [brand, setBrand] = useState('');
-  const [rentalPrice, setRentalPrice] = useState('');
-  const [minMileage, setMinMileage] = useState('');
-  const [maxMileage, setMaxMileage] = useState('');
+  const savedFilters = useSelector(selectAllFilters);
 
-  const handleSearch = (e) => {
+  // локальний стейт для форми
+
+  const [localFilters, setLocalFilters] = useState(savedFilters);
+
+  // якщо Redux-фільтри зміняться (наприклад reset), оновлюємо локальні
+
+  useEffect(() => {
+    setLocalFilters(savedFilters);
+  }, [savedFilters]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const newFilters = { brand, rentalPrice, minMileage, maxMileage };
-    dispatch(setFilters(newFilters));
 
-    const cleanFilters = Object.fromEntries(
-      Object.entries(newFilters).filter(
-        ([, v]) => v !== '' && v !== null && v !== undefined,
-      ),
-    );
+    // зберігаємо у Redux
+
+    dispatch(setFilters(localFilters));
+
+    // очищаємо список і робимо новий запит з фільтрами
 
     dispatch(clearCars());
-    dispatch(fetchCars({ page: 1, ...cleanFilters }));
+    dispatch(fetchCars({ page: 1, ...cleanFilters(localFilters) }));
   };
 
   return (
-    <form className={css.form} onSubmit={handleSearch}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <div className={css.wrap}>
-        <BrandSelect value={brand} onChange={setBrand} />
-        <PriceSelect value={rentalPrice} onChange={setRentalPrice} />
+        <BrandSelect
+          value={localFilters.brand || ''}
+          onChange={(value) =>
+            setLocalFilters((prev) => ({ ...prev, brand: value }))
+          }
+        />
+
+        <PriceSelect
+          value={localFilters.rentalPrice || ''}
+          onChange={(value) =>
+            setLocalFilters((prev) => ({ ...prev, rentalPrice: value }))
+          }
+        />
+
         <MileageInputs
-          min={minMileage}
-          max={maxMileage}
-          onChangeMin={setMinMileage}
-          onChangeMax={setMaxMileage}
+          min={localFilters.minMileage || ''}
+          max={localFilters.maxMileage || ''}
+          onChangeMin={(value) =>
+            setLocalFilters((prev) => ({ ...prev, minMileage: value }))
+          }
+          onChangeMax={(value) =>
+            setLocalFilters((prev) => ({ ...prev, maxMileage: value }))
+          }
         />
       </div>
+
       <button type="submit" className={css.searchBtn}>
         Search
       </button>

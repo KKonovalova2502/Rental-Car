@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { fetchCars } from '../../redux/catalog/operations.js';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn.jsx';
 import css from './CatalogPage.module.css';
+import { cleanFilters } from '../../utils/cleanFilters.js';
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -28,13 +29,7 @@ export default function CatalogPage() {
   }, [dispatch]);
 
   const handleLoadMore = () => {
-    const cleanFilters = Object.fromEntries(
-      Object.entries(filters || {}).filter(
-        ([, v]) => v !== '' && v !== null && v !== undefined,
-      ),
-    );
-
-    dispatch(fetchCars({ ...cleanFilters, page: Number(page) + 1 }));
+    dispatch(fetchCars({ page: Number(page) + 1, ...cleanFilters(filters) }));
   };
 
   return (
