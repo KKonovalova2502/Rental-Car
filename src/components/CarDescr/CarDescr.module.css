@@ -11,6 +11,14 @@
   margin-bottom: 8px;
 }
 
+.carId {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+  margin-left: 16px;
+}
+
 .info {
   font-weight: 500;
   font-size: 16px;
