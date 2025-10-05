@@ -1,35 +1,44 @@
-import { useState } from 'react';
+import Select from 'react-select';
 import css from './PriceSelect.module.css';
+import { selectStyles } from '../../utils/reactSelectStyles.js';
+import { DropdownIndicator } from '../../utils/DropdownIndicator.jsx';
 
 export default function PriceSelect({ value, onChange }) {
-  const [open, setOpen] = useState(false);
+  const priceOptions = [
+    { value: '30', label: '30' },
+    { value: '40', label: '40' },
+    { value: '50', label: '50' },
+    { value: '60', label: '60' },
+    { value: '70', label: '70' },
+    { value: '80', label: '80' },
+  ];
 
-  const handleChange = (e) => {
-    onChange(e.target.value);
-    setOpen(false);
+  const handleChange = (selectedOption) => {
+    onChange(selectedOption?.value || '');
   };
 
+  const selectedOption = value
+    ? priceOptions.find((option) => option.value === value)
+    : null;
+
   return (
-    <label className={`${css.label} ${open ? css.open : ''}`}>
+    <label className={css.label}>
       Price / 1 hour
-      <select
-        value={value}
+      <Select
+        name="price"
+        value={selectedOption}
         onChange={handleChange}
-        className={css.select}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
-      >
-        <option value="">Choose a price</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-        <option value="50">50</option>
-        <option value="60">60</option>
-        <option value="70">70</option>
-        <option value="80">80</option>
-      </select>
-      <svg className={css.icon} width="16" height="16">
-        <use href="/sprite-icons.svg#icon-arrow" />
-      </svg>
+        options={priceOptions}
+        placeholder="Choose a price"
+        styles={selectStyles}
+        formatOptionLabel={(option, { context }) => {
+          if (context === 'menu') return option.label;
+          if (context === 'value') return `To $${option.label}`;
+        }}
+        components={{ DropdownIndicator }}
+        classNamePrefix="price-select"
+        isSearchable={false}
+      />
     </label>
   );
 }
