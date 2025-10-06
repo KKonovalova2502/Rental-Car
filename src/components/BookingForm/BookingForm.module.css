@@ -55,6 +55,7 @@
   border-radius: 12px;
   outline: none;
   border: none;
+  resize: none;
 
   width: 576px;
   height: 88px;
@@ -96,4 +97,46 @@
 .button:hover,
 .button:focus {
   background: #0b44cd;
+}
+
+.datePickerWrapper {
+  position: relative;
+}
+
+.customArrow {
+  width: 24px;
+  height: 20px;
+  border: none;
+  background: transparent;
+}
+
+.headerCalendar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+.span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+  color: #101828;
+}
+
+.customDayNames {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #3470ff;
+}
+
+.customDayName {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+  text-align: center;
+  color: #8d929a;
 }
